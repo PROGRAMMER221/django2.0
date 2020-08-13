@@ -1,0 +1,108 @@
+{% extends 'index.html' %}
+{% block content %}
+<div class="container mt-5">
+    <h1>Transpoter Form</h1>
+    <form method="POST" class="mt-5" action="/transpoteraction/">
+        {% csrf_token %}
+        <div class="form-group row">
+            <label class="col-sm-2 col-form-label">Transpoter Name</label>
+            <div class="col-sm-10">
+                <input type="text" class="form-control" name="TransName">
+            </div>
+        </div>
+
+        <div class="form-group row">
+            <label class="col-sm-2 col-form-label">GSTIN</label>
+            <div class="col-sm-10">
+                <input type="text" class="form-control" name="Gstin" maxlength="15">
+            </div>
+        </div>  
+
+        <div class="form-group row">
+            <label class="col-sm-2 col-form-label">City</label>
+            <div class="col-sm-10">
+              <input type="text" class="form-control" name="City">
+            </div>
+        </div>
+
+        <div class="form-group row">
+            <label class="col-sm-2 col-form-label">District</label>
+            <div class="col-sm-10">
+              <select name="DistId" class="form-control">
+                <option value="None">-------</option>
+                {% for dist in District %}
+                <option value="{{dist.DistId}}">{{dist.DistName}}</option>
+                {% endfor %}
+              </select>
+            </div>
+        </div>
+
+        <div class="form-group row">
+            <label class="col-sm-2 col-form-label">State</label>
+            <div class="col-sm-10">
+              <select name="StId" class="form-control">
+                <option value="None">-------</option>
+                {% for std in State %}
+                <option value="{{std.StId}}">{{std.SName}}</option>
+                {% endfor %}
+              </select>
+            </div>
+        </div>
+
+        <div class="form-group row">
+            <label class="col-sm-2 col-form-label">Country</label>
+            <div class="col-sm-10">
+              <select name="CntId" class="form-control">
+                <option value="None">-------</option>
+                {% for cnt in Country %}
+                <option value="{{cnt.CntId}}">{{cnt.CName}}</option>
+                {% endfor %}
+              </select>
+            </div>
+        </div>
+
+        <div class="form-group row">
+            <label class="col-sm-2 col-form-label">ZipCode</label>
+            <div class="col-sm-10">
+              <input type="text" class="form-control" name="ZipCode" maxlength='6'>
+            </div>
+        </div>
+
+        <div class="form-group row">
+            <label class="col-sm-2 col-form-label">Contact Person</label>
+            <div class="col-sm-10">
+              <input type="text" class="form-control" name="ContactPerson" maxlength='6'>
+            </div>
+        </div>
+
+        <div class="form-group row">
+            <label class="col-sm-2 col-form-label">MobileNo.</label>
+            <div class="col-sm-10">
+              <input type="text" class="form-control" name="MobileNo" maxlength="10">
+            </div>
+        </div>
+
+        <div class="form-group row">
+            <label class="col-sm-2 col-form-label">PhoneNo.</label>
+            <div class="col-sm-10">
+              <input type="text" class="form-control" name="PhoneNo" maxlength="12">
+            </div>
+        </div>
+
+        <div class="form-group row">
+            <label class="col-sm-2 col-form-label">Email.</label>
+            <div class="col-sm-10">
+              <input type="email" class="form-control" name="Email">
+            </div>
+        </div>
+        
+        <div class="form-group row">
+            <span class="col-sm-2 col-form-label"></span>
+            <div class="col-sm-10">
+                <button type="submit" class="btn btn-outline-primary">SUBMIT</button>
+            </div>
+        </div>  
+
+    </form>
+</div>
+{% endblock %}

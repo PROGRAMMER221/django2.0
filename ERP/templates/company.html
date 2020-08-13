@@ -1,0 +1,437 @@
+{% extends 'index.html' %}
+{% block content %}
+<div class="container mt-5">
+    <h1>Company Management</h1>
+    <form method="POST" class="mt-5" action="/companyaction/">
+        {% csrf_token %}
+
+        <div class="form-group row">
+            <label class="col-sm-4 col-form-label">CompanyType</label>
+            <div class="col-sm-8">
+              <select name="CtId" class="form-control">
+                  <option value="None">--------</option>
+                  {% for ct in companytype %}
+                  <option value="{{ct.CtId}}">{{ct.CType}}</option>
+                  {% endfor %}
+              </select>
+            </div>
+        </div>
+
+        <div class="form-group row">
+            <label class="col-sm-4 col-form-label">CompanyGroup</label>
+            <div class="col-sm-8">
+              <select name="CgId" class="form-control">
+                  <option value="None">--------</option>
+                  {% for cg in companygroup %}
+                  <option value="{{cg.CgId}}">{{cg.CGroup}}</option>
+                  {% endfor %}
+              </select>
+            </div>
+        </div>
+
+        <div class="form-group row">
+            <label class="col-sm-4 col-form-label">Salutation</label>
+            <div class="col-sm-8">
+                <input type="text" class="form-control" name="Salutation">
+            </div>
+        </div>
+
+        <div class="form-group row">
+            <label class="col-sm-4 col-form-label">CompanyName</label>
+            <div class="col-sm-8">
+                <input type="text" class="form-control" name="CompanyName" maxlength="15">
+            </div>
+        </div>  
+
+        <div class="form-group row">
+            <label class="col-sm-4 col-form-label">City</label>
+            <div class="col-sm-8">
+              <input type="text" class="form-control" name="City">
+            </div>
+        </div>
+
+        <div class="form-group row">
+            <label class="col-sm-4 col-form-label">District</label>
+            <div class="col-sm-8">
+              <select name="DistId" class="form-control">
+                <option value="None">-------</option>
+                {% for dist in District %}
+                <option value="{{dist.DistId}}">{{dist.DistName}}</option>
+                {% endfor %}
+              </select>
+            </div>
+        </div>
+
+        <div class="form-group row">
+            <label class="col-sm-4 col-form-label">State</label>
+            <div class="col-sm-8">
+              <select name="StId" class="form-control">
+                <option value="None">-------</option>
+                {% for std in State %}
+                <option value="{{std.StId}}">{{std.SName}}</option>
+                {% endfor %}
+              </select>
+            </div>
+        </div>
+
+        <div class="form-group row">
+            <label class="col-sm-4 col-form-label">Country</label>
+            <div class="col-sm-8">
+              <select name="CntId" class="form-control">
+                <option value="None">-------</option>
+                {% for cnt in Country %}
+                <option value="{{cnt.CntId}}">{{cnt.CName}}</option>
+                {% endfor %}
+              </select>
+            </div>
+        </div>
+
+        <div class="form-group row">
+            <label class="col-sm-4 col-form-label">ZipCode</label>
+            <div class="col-sm-8">
+              <input type="text" class="form-control" name="ZipCode" maxlength='6'>
+            </div>
+        </div>
+
+        <div class="form-group row">
+            <label class="col-sm-4 col-form-label">Contact Person</label>
+            <div class="col-sm-8">
+              <input type="text" class="form-control" name="ContactPerson" maxlength='6'>
+            </div>
+        </div>
+
+        <div class="form-group row">
+            <label class="col-sm-4 col-form-label">MobileNo.</label>
+            <div class="col-sm-8">
+              <input type="text" class="form-control" name="MobileNo" maxlength="10">
+            </div>
+        </div>
+
+        <div class="form-group row">
+            <label class="col-sm-4 col-form-label">PhoneNo.</label>
+            <div class="col-sm-8">
+              <input type="text" class="form-control" name="PhoneNo" maxlength="12">
+            </div>
+        </div>
+
+        <div class="form-group row">
+            <label class="col-sm-4 col-form-label">Email</label>
+            <div class="col-sm-8">
+              <input type="email" class="form-control" name="Email">
+            </div>
+        </div>
+
+        <div class="form-group row">
+            <label class="col-sm-4 col-form-label">PaymnetTerm</label>
+            <div class="col-sm-8">
+              <input type="text" class="form-control" name="PaymnetTerm" maxlength="12">
+            </div>
+        </div>
+
+        <div class="form-group row">
+            <label class="col-sm-4 col-form-label">CreditDays</label>
+            <div class="col-sm-8">
+              <input type="text" class="form-control" name="CreditDays" maxlength="12">
+            </div>
+        </div>
+
+        <div class="form-group row">
+            <label class="col-sm-4 col-form-label">CreditLimit</label>
+            <div class="col-sm-8">
+              <input type="text" class="form-control" name="CreditLimit" maxlength="12">
+            </div>
+        </div>
+
+        <div class="form-group row">
+            <label class="col-sm-4 col-form-label">ROIArrear</label>
+            <div class="col-sm-8">
+              <input type="text" class="form-control" name="ROIArrear" maxlength="12">
+            </div>
+        </div>
+
+        <div class="form-group row">
+            <label class="col-sm-4 col-form-label">Commitment1</label>
+            <div class="col-sm-8">
+              <input type="text" class="form-control" name="Commitment1" maxlength="12">
+            </div>
+        </div>
+
+        <div class="form-group row">
+            <label class="col-sm-4 col-form-label">TOD1</label>
+            <div class="col-sm-8">
+              <input type="text" class="form-control" name="TOD1" maxlength="12">
+            </div>
+        </div>
+
+        <div class="form-group row">
+            <label class="col-sm-4 col-form-label">Commitment2</label>
+            <div class="col-sm-8">
+              <input type="text" class="form-control" name="Commitment2" maxlength="12">
+            </div>
+        </div>
+
+        <div class="form-group row">
+            <label class="col-sm-4 col-form-label">TOD2</label>
+            <div class="col-sm-8">
+              <input type="text" class="form-control" name="TOD2" maxlength="12">
+            </div>
+        </div>
+
+        <div class="form-group row">
+            <label class="col-sm-4 col-form-label">Commitment3</label>
+            <div class="col-sm-8">
+              <input type="text" class="form-control" name="Commitment3" maxlength="12">
+            </div>
+        </div>
+
+        <div class="form-group row">
+            <label class="col-sm-4 col-form-label">TOD3</label>
+            <div class="col-sm-8">
+              <input type="text" class="form-control" name="TOD3" maxlength="12">
+            </div>
+        </div>
+
+        <div class="form-group row">
+            <label class="col-sm-4 col-form-label">DealsIn</label>
+            <div class="col-sm-8">
+              <input type="text" class="form-control" name="DealsIn" maxlength="12">
+            </div>
+        </div>
+
+        <div class="form-group row">
+            <label class="col-sm-4 col-form-label">Supply Type</label>
+            <div class="col-sm-8">
+              <select name="SlId" class="form-control">
+                <option value="None">-------</option>
+                {% for st in supplytype %}
+                <option value="{{st.SptId}}">{{st.SupplyType}}</option>
+                {% endfor %}
+              </select>
+            </div>
+        </div>
+
+        <div class="form-group row">
+            <label class="col-sm-4 col-form-label">Supplier Type</label>
+            <div class="col-sm-8">
+              <select name="SltId" class="form-control">
+                <option value="None">-------</option>
+                {% for slt in suppliertype %}
+                <option value="{{slt.SltId}}">{{slt.SupplierType}}</option>
+                {% endfor %}
+              </select>
+            </div>
+        </div>
+
+        <div class="form-group row">
+            <label class="col-sm-4 col-form-label">Date Of Start</label>
+            <div class="col-sm-8">
+              <input type="datetime-local" class="form-control" name="DateOfStart" maxlength="12">
+            </div>
+        </div>
+
+        <div class="form-group row">
+            <label class="col-sm-4 col-form-label">CStatus</label>
+            <div class="col-sm-8">
+              <input type="text" class="form-control" name="CStatus" maxlength="1">
+            </div>
+        </div>
+
+        <div class="form-group row">
+            <label class="col-sm-4 col-form-label">Gstin</label>
+            <div class="col-sm-8">
+              <input type="text" class="form-control" name="Gstin" maxlength="15">
+            </div>
+        </div>
+
+        <div class="form-group row">
+            <label class="col-sm-4 col-form-label">PanNo</label>
+            <div class="col-sm-8">
+              <input type="text" class="form-control" name="PanNo" maxlength="15">
+            </div>
+        </div>
+
+        <div class="form-group row">
+            <label class="col-sm-4 col-form-label">Circle</label>
+            <div class="col-sm-8">
+              <input type="text" class="form-control" name="Circle" maxlength="15">
+            </div>
+        </div>
+
+        <div class="form-group row">
+            <label class="col-sm-4 col-form-label">Ward</label>
+            <div class="col-sm-8">
+              <input type="text" class="form-control" name="Ward" maxlength="15">
+            </div>
+        </div>
+
+        <div class="form-group row">
+            <label class="col-sm-4 col-form-label">TanNo</label>
+            <div class="col-sm-8">
+              <input type="text" class="form-control" name="TanNo" maxlength="15">
+            </div>
+        </div>
+
+        <div class="form-group row">
+            <label class="col-sm-4 col-form-label">CinNo</label>
+            <div class="col-sm-8">
+              <input type="text" class="form-control" name="CinNo" maxlength="15">
+            </div>
+        </div>
+
+        <div class="form-group row">
+            <label class="col-sm-4 col-form-label">EsiNo</label>
+            <div class="col-sm-8">
+              <input type="text" class="form-control" name="EsiNo" maxlength="15">
+            </div>
+        </div>
+
+        <div class="form-group row">
+            <label class="col-sm-4 col-form-label">PfNo</label>
+            <div class="col-sm-8">
+              <input type="text" class="form-control" name="PfNo" maxlength="15">
+            </div>
+        </div>
+
+        <div class="form-group row">
+            <label class="col-sm-4 col-form-label">CstNo</label>
+            <div class="col-sm-8">
+              <input type="text" class="form-control" name="CstNo" maxlength="15">
+            </div>
+        </div>
+
+        <div class="form-group row">
+            <label class="col-sm-4 col-form-label">TinNo</label>
+            <div class="col-sm-8">
+              <input type="text" class="form-control" name="TinNo" maxlength="15">
+            </div>
+        </div>
+
+        <div class="form-group row">
+          <label class="col-sm-4 col-form-label">Proof1</label>
+          <div class="col-sm-8">
+            <textarea name="Proof1" cols="30" rows="10" class="form-control"></textarea>
+          </div>
+        </div>
+
+        <div class="form-group row">
+          <label class="col-sm-4 col-form-label">ImgProof1</label>
+          <div class="col-sm-8">
+            <input type="file" name="ImgProof1">
+          </div>
+        </div>
+
+        <div class="form-group row">
+          <label class="col-sm-4 col-form-label">Proof2</label>
+          <div class="col-sm-8">
+            <textarea name="Proof2" cols="30" rows="10" class="form-control"></textarea>
+          </div>
+        </div>
+
+        <div class="form-group row">
+          <label class="col-sm-4 col-form-label">ImgProof2</label>
+          <div class="col-sm-8">
+            <input type="file" name="ImgProof2">
+          </div>
+        </div>
+
+        <div class="form-group row">
+          <label class="col-sm-4 col-form-label">Proof3</label>
+          <div class="col-sm-8">
+            <textarea name="Proof3" cols="30" rows="10" class="form-control"></textarea>
+          </div>
+        </div>
+
+        <div class="form-group row">
+          <label class="col-sm-4 col-form-label">ImgProof3</label>
+          <div class="col-sm-8">
+            <input type="file" name="ImgProof3">
+          </div>
+        </div>
+
+        <div class="form-group row">
+          <label class="col-sm-4 col-form-label">Proof4</label>
+          <div class="col-sm-8">
+            <textarea name="Proof4" cols="30" rows="10" class="form-control"></textarea>
+          </div>
+        </div>
+
+        <div class="form-group row">
+          <label class="col-sm-4 col-form-label">ImgProof4</label>
+          <div class="col-sm-8">
+            <input type="file" name="ImgProof4">
+          </div>
+        </div>
+
+        <div class="form-group row">
+          <label class="col-sm-4 col-form-label">Proof5</label>
+          <div class="col-sm-8">
+            <textarea name="Proof5" cols="30" rows="10" class="form-control"></textarea>
+          </div>
+        </div>
+
+        <div class="form-group row">
+          <label class="col-sm-4 col-form-label">ImgProof5</label>
+          <div class="col-sm-8">
+            <input type="file" name="ImgProof5">
+          </div>
+        </div>
+
+        <div class="form-group row">
+            <label class="col-sm-4 col-form-label">BankName</label>
+            <div class="col-sm-8">
+              <input type="text" class="form-control" name="BankName" maxlength="15">
+            </div>
+        </div>
+
+        <div class="form-group row">
+            <label class="col-sm-4 col-form-label">BranchName</label>
+            <div class="col-sm-8">
+              <input type="text" class="form-control" name="BranchName" maxlength="15">
+            </div>
+        </div>
+
+        <div class="form-group row">
+            <label class="col-sm-4 col-form-label">BankAcName</label>
+            <div class="col-sm-8">
+              <input type="text" class="form-control" name="BankAcName" maxlength="15">
+            </div>
+        </div>
+
+        <div class="form-group row">
+            <label class="col-sm-4 col-form-label">AccountNo</label>
+            <div class="col-sm-8">
+              <input type="text" class="form-control" name="AccountNo" maxlength="15">
+            </div>
+        </div>
+
+        <div class="form-group row">
+            <label class="col-sm-4 col-form-label">AccountType</label>
+            <div class="col-sm-8">
+              <input type="text" class="form-control" name="AccountType" maxlength="15">
+            </div>
+        </div>
+
+        <div class="form-group row">
+            <label class="col-sm-4 col-form-label">IfscCode</label>
+            <div class="col-sm-8">
+              <input type="text" class="form-control" name="IfscCode" maxlength="15">
+            </div>
+        </div>
+        
+        <div class="form-group row">
+            <label class="col-sm-4 col-form-label">SwiftCode</label>
+            <div class="col-sm-8">
+              <input type="text" class="form-control" name="SwiftCode" maxlength="15">
+            </div>
+        </div>
+
+        <div class="form-group row">
+            <span class="col-sm-4 col-form-label"></span>
+            <div class="col-sm-8">
+                <button type="submit" class="btn btn-outline-primary">SUBMIT</button>
+            </div>
+        </div>  
+</div>
+    </form>
+
+{% endblock %}

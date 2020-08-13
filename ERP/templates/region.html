@@ -1,0 +1,17 @@
+{% extends 'index.html' %}
+{% block content %}
+<div class="container mt-5">
+    <h1>Region Form</h1>
+    <form method="POST">
+        {% csrf_token %}
+        <div class="form-group row">
+            <label for="staticEmail" class="col-sm-2 col-form-label">RegName</label>
+            <div class="col-sm-10">
+              {{form.RegName}}
+            </div>
+        </div>
+        
+        <button type="submit" class="btn btn-outline-primary">SUBMIT</button>
+    </form>
+</div>
+{% endblock %}

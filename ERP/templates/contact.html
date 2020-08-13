@@ -1,0 +1,75 @@
+{% extends 'index.html' %}
+{% block content %}
+<div class="container mt-5">
+    <h1>ContactManagement Form</h1>
+    <form method="POST" class="mt-5" action="/contact/">
+        {% csrf_token %}
+        <div class="form-group row">
+            <label class="col-sm-2 col-form-label">Company Name</label>
+            <div class="col-sm-10">
+              <select name="CId" class="form-control">
+                  <option value="None">--------</option>
+                  {% for cmp in Company %}
+                  <option value="{{cmp.CId}}">{{cmp.CompanyName}}</option>
+                  {% endfor %}
+              </select>
+            </div>
+        </div>
+
+        <div class="form-group row">
+            <label class="col-sm-2 col-form-label">Contact Person</label>
+            <div class="col-sm-10">
+                <input type="text" name="ContactPerson" class="form-control">
+            </div>
+        </div>
+        
+        <div class="form-group row">
+            <label class="col-sm-2 col-form-label">Department</label>
+            <div class="col-sm-10">
+                <input type="text" name="Department" class="form-control">
+            </div>
+        </div> 
+
+        <div class="form-group row">
+            <label class="col-sm-2 col-form-label">Designation</label>
+            <div class="col-sm-10">
+              <select name="DegId" class="form-control">
+                <option value="None">-------</option>
+                {% for deg in Designation %}
+                <option value="{{deg.DegId}}">{{deg.DegName}}</option>
+                {% endfor %}
+              </select>
+            </div>
+        </div>
+
+        <div class="form-group row">
+            <label class="col-sm-2 col-form-label">MobileNo</label>
+            <div class="col-sm-10">
+                <input type="text" name="MobileNo" class="form-control" maxlength="10">
+            </div>
+        </div> 
+
+        <div class="form-group row">
+            <label class="col-sm-2 col-form-label">PhoneNo</label>
+            <div class="col-sm-10">
+                <input type="text" name="PhoneNo" class="form-control" maxlength="12">
+            </div>
+        </div> 
+                        
+        <div class="form-group row">
+            <label class="col-sm-2 col-form-label">Email.</label>
+            <div class="col-sm-10">
+              <input type="email" class="form-control" name="Email">
+            </div>
+        </div>
+
+        <div class="form-group row">
+            <span class="col-sm-2 col-form-label"></span>
+            <div class="col-sm-10">
+                <button type="submit" class="btn btn-outline-primary">SUBMIT</button>
+            </div>
+        </div> 
+
+    </form>
+</div>
+{% endblock %}
